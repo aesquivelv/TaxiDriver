@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../main.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -13,6 +14,10 @@ class Login extends StatelessWidget {
             RaisedButton(
               child: Text("Pedir un viaje"),
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp())
+                );
               }
             )
           ]
