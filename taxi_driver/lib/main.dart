@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:qrscan/qrscan.dart' as scanner;
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Scan Barcode and QR'),
     );
   }
 }
@@ -44,16 +45,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String _counter,_value="";
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+  Future _incrementCounter() async{
+    _counter=await  FlutterBarcodeScanner.scanBarcode("#004297","Cancel",true);
+    setState((){
+      _value=_counter;
     });
   }
 
@@ -92,10 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Valor del Scan',
             ),
             Text(
-              '$_counter',
+              _value,
               style: Theme.of(context).textTheme.display1,
             ),
           ],
@@ -104,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.settings_overscan),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
