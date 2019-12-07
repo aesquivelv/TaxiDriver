@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.taxi_driver">
+    <meta-data android:name="com.google.android.maps.v2.API_KEY"
+        android:value="YOUR ANDROID API KEY HERE"/>
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->

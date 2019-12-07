@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
+import 'viaje.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -9,19 +9,32 @@ class Login extends StatelessWidget {
         title: Text("Logo")
       ),
       body: Center(
-        child: Row(
+        child: Column(
           children: [
+            Image.asset("assets/images/logo.png", width: 100.0, height: 100.0),
             RaisedButton(
               child: Text("Pedir un viaje"),
               onPressed: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyApp())
+                  context, 
+                  MaterialPageRoute(builder: (context) => Viaje())
                 );
+              }
+            ),
+            RaisedButton(
+              child: Text("Encuentra base"),
+              onPressed: (){
+
               }
             )
           ]
         )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+
+        },
+        child: Icon(Icons.account_circle)
       )
     );
   }

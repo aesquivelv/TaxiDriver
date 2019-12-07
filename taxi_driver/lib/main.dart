@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import './views/login.dart';
-import 'package:qrscan/qrscan.dart' as scanner;
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -27,12 +25,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _counter,_value="";
+  String _counter;
 
   Future _incrementCounter() async{
-    _counter=await  FlutterBarcodeScanner.scanBarcode("#004297","Cancel",true);
     setState((){
-      _value=_counter;
     });
   }
 
@@ -71,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                     child: Container(
-                      child: Text("Login")
+                      child: Text("Inicia Sesión")
                     )
                   )
                 ]
@@ -79,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         )
-      )
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
