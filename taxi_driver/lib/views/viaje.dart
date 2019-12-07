@@ -22,8 +22,9 @@ class Viaje extends StatelessWidget {
                 labelText: 'Search',
               ),
             ),
-            Text("Mapa aqui"),
+            Image.asset("assets/images/mapa.png", ),
             Container(
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
                   Row(
@@ -41,7 +42,6 @@ class Viaje extends StatelessWidget {
                           color: Colors.amber,
                         ),
                         onRatingUpdate: (rating) {
-                          print(rating);
                         },
                       )
                     ]
@@ -61,7 +61,6 @@ class Viaje extends StatelessWidget {
                           color: Colors.amber,
                         ),
                         onRatingUpdate: (rating) {
-                          print(rating);
                         },
                       )
                     ]
@@ -81,7 +80,7 @@ class Viaje extends StatelessWidget {
                           color: Colors.amber,
                         ),
                         onRatingUpdate: (rating) {
-                          print(rating);
+                      
                         },
                       )
                     ]
