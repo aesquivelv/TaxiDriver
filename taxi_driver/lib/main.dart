@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './views/login.dart';
-
+import 'package:qrscan/qrscan.dart' as scanner;
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Taxi Driver'),
+      home: MyHomePage(title: 'Scan Barcode and QR'),
     );
   }
 }
@@ -26,11 +27,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String _counter,_value="";
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
+  Future _incrementCounter() async{
+    _counter=await  FlutterBarcodeScanner.scanBarcode("#004297","Cancel",true);
+    setState((){
+      _value=_counter;
     });
   }
 
@@ -78,6 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         )
       )
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.settings_overscan),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
